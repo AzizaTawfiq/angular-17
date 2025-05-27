@@ -1,0 +1,10 @@
+<p class="text-danger">Hello, {{ userName }}</p>
+<p class="text-danger">Hello, {{ userFullName() }}</p>
+<p>count up to {{ count }}</p>
+<button (click)="increment()">Increment</button>
+<input type="text" [(ngModel)]="name" placeholder="Enter your name" />
+<p>Current name: {{ name }}</p>
+<p>Current value: {{ signalValue() }}</p>
+// Using signalValue to get the current value of the signal
+
+<div [title]="title">aziza</div>
