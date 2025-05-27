@@ -1,0 +1,12 @@
+# Angular decorators
+
+Angular decorators are a way to add metadata to classes, properties, and methods in Angular. They are used to provide additional information about the class, property, or method, such as its name, type , or behavior.
+It denoted by @ symbol
+for example:
+@component({selector: 'app-root'}) //@component is a decorator that adds metadata to the class.
+@viewChild (ChildComponent) // @viewChild is a decorator that injects a reference to a child component into the parent component.
+@Input() // @Input is a decorator that allows you to pass data from parent to child component
+@Output() // @Output is a decorator that allows you to pass data from child to parent component
+@pipe() // @pipe is a decorator that allows you to create a pipe
+@directive() // @directive is a decorator that allows you to create a directive
+

@@ -1,0 +1,62 @@
+# what is Change Detection in angular ? اكتشاف التغيرات
+
+classic way of change detection in angular is by using the change detection mechanism of angular which is based on the zone.js library
+(zone notifies angular about user events only) (zone-based-change-detection). This mechanism is responsible for detecting changes in the application and updating the view accordingly
+by comparing the current state of the application with the previous(watch all code in the application to detect changes) state but it effect badly on
+1-the performance of the application especially when the application is complex and big.
+2-the bundle size of the application will increase because of the zone.js library.
+and this was an old way before angular 17 but in angular 17 and above we have a new way of change detection called signals.
+
+# Signals in angular(zoneless and optimum) way? انا كمطور اللي هقول لانجولر ف تغير حصل وفين بالظبط وبالتالي مش هيعمل واتش لكل الابلكيشن
+
+signals in angular is a new way of change detection in angular 16 and be stable in angular 17 and above. it is a more efficient and performant way of change detection 
+compared to the classic way of change detection in angular. it is based on the concept of signals.
+signal means a notification that something has changed in the application and it will be detected by angular and the view will be updated accordingly.
+signal is wrapper or object that store any value and it notify angular that this value has changed in the application in specific place and angular will 
+detect the change and update the view.  
+this way
+1-Improve performance by prevent comparing all the code in the application to detect changes.
+2-Reduce the bundle size of the application because we do not need to include the zone.js library
+3-Reactivity: signals are reactive, meaning that when a signal changes and propagate تنشر هذا التغيير, all the components that consume or subscribe this signal will be notified and updated accordingly.
+For example:(See about component logic)
+
+# How to create signal in angular?
+To create a signal in angular, you can use the `signal` function from the `@angular/core` package.
+example:
+import { signal } from '@angular/core';
+const mySignal = signal(5); // create a signal with initial value 0
+# How to set(mutate) value to signal in angular?
+There are two ways to set value to signal in angular:
+1- Using the `set` method of the signal object.
+example:
+mySignal.set(10); // set the value of the signal to 10
+2- Using the `update` method of the signal object.
+example:
+mySignal.update(value => value + 1); // increment the value of the signal by 1
+# How to get value from signal in angular?
+To get value from signal in angular, you can use the `get` method of the signal object.
+example:
+const value = mySignal.get(); // get the value of the signal
+
+# Difference between set and update methods in angular signals?
+The `set` method of the signal object is used to set a new value to the signal,
+while the `update` method is used to update the value of the signal based on the current value.
+# How to make signal as readonly in angular?
+To make a signal as readonly in angular, you can use the `asReadonly` method of the signal object.
+example:
+const myReadonlySignal = mySignal.asReadonly(); // create a readonly signal from the original signal
+myReadonlySignal.set(20); // this will throw an error because the signal is readonly
+
+# How to create computed signal in angular?
+To create a computed signal in angular, you can use the `computed` function from the `@angular/core` package.
+computed return a new signal that is derived from other signals, meaning it will automatically update when the signals it depends on change.
+example:
+import { computed } from '@angular/core';
+const myComputedSignal = computed(() => {
+  return mySignal.get() * 2; // create a computed signal that returns the value of mySignal multiplied by 2
+}); // create a computed signal that depends on mySignal
+
+# What is effect api 
+
+
+

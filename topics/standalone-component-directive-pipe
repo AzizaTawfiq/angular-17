@@ -1,0 +1,66 @@
+# component based architecture in angular
+
+Component-based architecture is a design pattern that structures an application as a collection of small, 
+independent components that communicate with each other through well-defined interfaces.
+
+#How to create component?
+using command ng g c component-name // ng refer to angular CLI, g refer to create a new component, c refer to component
+
+# How to configure component?
+
+using @component decorator in component.ts file, you can configure the component by adding metadata such as selector, template, styles, and providers.
+
+
+# what standalone component?
+
+Standalone component is a component that can be used without being part of a module means that component act as a module. It is a self-contained component that can be imported and used directly in a template.
+كنا بنعمل كومبوننت ونعمل declare ف الموديول الخاصه به لكن الخاصه به
+لكن دلوقتي اصبح مستقل ويمكن استخدامه في اي مكان
+
+@Component({
+selector: 'app-my-component',
+template: `  <p>my-component works!</p>
+    <app-other-component></app-other-component>
+    <div myDirective>Directive works!</div>`,
+standalone: true,
+imports: [OtherComponent, MyDirective] // Import the other component and directive
+})
+
+Directive is a class that is used to add custom behavior to an element, attribute, or property. To make a directive standalone, you need to add the `standalone` property to the `@directive
+for example:
+@Directive({
+selector: '[appMyDirective]', // The directive will be applied to elements with this attribute
+standalone: true // Make the directive standalone
+})
+
+
+# How to make standalone pipe in angular ?
+
+Pipes are used to transform data in a template. To make a pipe standalone, you need to
+add the `standalone` property to the `@pipe decorator
+for example:
+import { Pipe, PipeTransform } from '@angular/core';
+@Pipe({
+name: 'myPipe', // The name of the pipe
+standalone: true // Make the pipe standalone
+})
+
+When use any standalone component or directive or pipe in angular template you should import it in the module where you want to us instead of declaring it in the module where you want to use it.
+declarations:[] No
+imports: [] Yes
+
+# How services works with standalone components in angular ?
+
+In bootstrapApplication , you can provide services in the providers array of the bootstrapApplication. This will make the services available to all the components in the application.
+for example:
+import { bootstrapApplication } from '@angular/platform-browser';
+import { MyService } from './my.service';
+import { MyComponent } from './my.component';
+bootstrapApplication(MyComponent, {
+providers: [MyService]
+}).catch(err =>
+console.error('Shit happened:', err)
+);
+In the standalone component, you can import the service using the import statement.
+for example:
+import { MyService } from './my.service';

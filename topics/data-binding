@@ -1,0 +1,55 @@
+# Data binding
+
+Data binding is a mechanism in Angular that allows you to bind data from a component to a template, and vice versa.
+There are two types of data binding in Angular:
+
+1. One-way data binding: This is the most common type of data binding in Angular. It allows you to bind data from a component to a template, but not the other way around.
+   From component to template:
+
+a- property binding: it is used to bind a property of a component to a template.
+for example:
+
+<div [title]="title">
+
+b- attribute binding: it is used to bind an attribute of a component to a template.???
+for example:
+
+<div [attr.status]="status">
+c- interpolation : it is used to bind a property of a component to a template using the {{ }} syntax.
+for example:
+<p >{{title}}</p> // the html output is is the value of title property in the component
+<p ngNonBindable>{{title}}</p> // ngNonBindable is used to prevent binding  and the output in html will be {{title}} instead of the value of title variable
+ d- class binding: it is used to bind a class of a component to a template.
+ for example:
+ <div [class.active]="isActive">
+ <div [class]="isActive ? 'active' : 'inactive'"> //using ternary operator to bind the class
+ e- style binding: it is used to bind a style of a component to a template.
+ for example:
+ <p [style.color]="isRed ? 'red' : 'green'"></p>
+ <p [style]="isRed ? 'background-color:red' : 'background-color: green' "></p> // using ternary operator to bind style
+
+From template to component:
+a- event binding: it is used to bind an event of a template to a component ().
+for example:
+<button (click)="onClick()">click < button>
+
+2. Two-way data binding:
+   This type of data binding allows you to bind data from a component to a template, and also allows the template to update the component's data.
+   For example:
+   in html
+   <input
+   [(ngModel)]="name"
+   name="name"
+   placeholder="Enter name">
+   />
+   in ts
+   export class AppComponent {
+   name = 'Angular';
+   changeName(){
+   this.name = 'Angular 2';
+   }
+   }
+
+# what different between property binding and interpolation?
+
+interpolation is always return string value, while property binding can return any type of value.

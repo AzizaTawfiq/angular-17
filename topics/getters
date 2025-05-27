@@ -1,0 +1,26 @@
+# How to use getter for computed property in angular ?
+
+getter is a function that is used to get the value of a property. In angular, you can us getter to create a computed property.
+it is readonly property that is calculated on the fly when it is accessed.
+@Component({
+selector: 'app-user',
+template: `  <p>Full Name: {{ fullName }}</p> // instead of using {{ user.firstName }} and {{ user.lastName }}`
+})
+/* export class UserComponent {
+private firstName = 'John';
+private lastName = 'Doe';
+get fullName(): string {
+return `${this._firstName} ${this._lastName}`;
+}
+} */
+
+# Different between function and computed property in angular?
+
+Computed Properties
+A computed property is a property that is calculated on the fly when its dependencies change. In Angular, computed properties are typically used to simplify the template and improve performance.
+Functions
+A function is a block of code that can be executed multiple times with different inputs. In Angular, functions are typically used to perform complex calculations or to handle user interactions.
+Computed properties are only recalculated when their dependencies change, improving performance.
+Computed properties make the template easier to read and understand.
+Functions can be called multiple times, leading to performance issues if the calculation is complex or if the function is called frequently.
+Functions can make the template harder to read and understand
